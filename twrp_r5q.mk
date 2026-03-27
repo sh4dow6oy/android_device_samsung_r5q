@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/samsung/r5q/device.mk)
 
 PRODUCT_DEVICE := r5q
-PRODUCT_NAME := omni_r5q
+PRODUCT_NAME := twrp_r5q
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-G770F
 PRODUCT_MANUFACTURER := samsung
