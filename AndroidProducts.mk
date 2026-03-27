@@ -9,6 +9,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/omni_r5q.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_r3q-user \
-    omni_r3q-userdebug \
-    omni_r3q-eng
+    lineage_r5q-eng \
+    lineage_r5q-userdebug \
+    lineage_r5q-user \
