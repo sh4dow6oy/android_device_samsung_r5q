@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_r5q.mk
+    $(LOCAL_DIR)/twrp_r5q.mk
 
 COMMON_LUNCH_CHOICES := \
     lineage_r5q-eng \
