@@ -5,4 +5,4 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/samsung/r3q
+LOCAL_PATH := device/samsung/r5q
