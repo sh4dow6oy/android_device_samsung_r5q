@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/samsung/r3q
+DEVICE_PATH := device/samsung/r5q
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -47,8 +47,8 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DTBO := true
-#TARGET_KERNEL_CONFIG := r3q_defconfig
-#TARGET_KERNEL_SOURCE := kernel/samsung/r3q
+#TARGET_KERNEL_CONFIG := r5q_defconfig
+#TARGET_KERNEL_SOURCE := kernel/samsung/r5q
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -88,8 +88,8 @@ PLATFORM_VERSION := 16.1.0
 TARGET_OTA_ASSERT_DEVICE := r3q
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_PREBUILT_DTBOIMAGE := device/samsung/r3q/prebuilt/dtbo.img
-TARGET_RECOVERY_FSTAB := device/samsung/r3q/recovery/root/etc/recovery.fstab
+BOARD_PREBUILT_DTBOIMAGE := device/samsung/r5q/prebuilt/dtbo.img
+TARGET_RECOVERY_FSTAB := device/samsung/r5q/recovery/root/etc/recovery.fstab
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
