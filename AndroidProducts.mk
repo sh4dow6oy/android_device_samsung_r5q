@@ -11,4 +11,4 @@ PRODUCT_MAKEFILES := \
 COMMON_LUNCH_CHOICES := \
     lineage_r5q-eng \
     lineage_r5q-userdebug \
-    lineage_r5q-user \
+    lineage_r5q-user
