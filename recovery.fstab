@@ -1,21 +1,45 @@
-/boot           emmc      /dev/block/bootdevice/by-name/boot                   flags=display=boot;backup=1;flashimg=1
-/recovery       emmc      /dev/block/bootdevice/by-name/recovery               flags=display=recovery;backup=1;flashimg=1
-/system         erofs     system                                               flags=display="System";logical;first_stage_mount
-/vendor         ext4      vendor                                               flags=display="Vendor";logical;first_stage_mount
-/product        ext4      product                                              flags=display="Product";logical;first_stage_mount
-/odm            ext4      odm                                                  flags=display="Odm";logical;first_stage_mount
-/data           f2fs      /dev/block/bootdevice/by-name/userdata               flags=display=data;fileencryption=ice:aes-256-cts
-/cache          ext4      /dev/block/bootdevice/by-name/cache                  flags=display=cache
-/efs            ext4      /dev/block/bootdevice/by-name/efs                    flags=display=efs;backup=1
-/sec_efs        ext4      /dev/block/bootdevice/by-name/sec_efs                flags=display=sec_efs;backup=1
-/modem          emmc      /dev/block/bootdevice/by-name/apnhlos                flags=display=modem;backup=1
-/mdm            emmc      /dev/block/bootdevice/by-name/modem                  flags=display=mdm;backup=1
-/dsp            emmc      /dev/block/bootdevice/by-name/dsp                    flags=display=dsp
-/misc           emmc      /dev/block/bootdevice/by-name/misc                   flags=display=misc
-/keydata        ext4      /dev/block/bootdevice/by-name/keydata                flags=display=keydata
-/keyrefuge      ext4      /dev/block/bootdevice/by-name/keyrefuge              flags=display=keyrefuge
-/dtbo           emmc      /dev/block/bootdevice/by-name/dtbo                   flags=display=dtbo;backup=1;flashimg=1
-/vbmeta_samsung emmc      /dev/block/bootdevice/by-name/vbmeta_samsung         flags=display=vbmeta_samsung;backup=1
-/vbmeta_system  emmc      /dev/block/bootdevice/by-name/vbmeta_system          flags=display=vbmeta_system;backup=1
-/external_sd    vfat      /dev/block/mmcblk0p1 /dev/block/mmcblk0              flags=display="MicroSD";storage;wipeui;removable
-/usb-otg        vfat      /dev/block/sdg1      /dev/block/sdg
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# Mount point       FS           Device               2nd Device                 Flags
+/boot               emmc         /dev/block/bootdevice/by-name/boot              flags=backup=1;flashimg=1;display="Kernel Image"
+/dtbo               emmc         /dev/block/bootdevice/by-name/dtbo              flags=backup=1;flashimg=1;display="DTBO Image"
+/recovery           emmc         /dev/block/bootdevice/by-name/recovery          flags=backup=1;flashimg=1;display="Recovery Image"
+
+# Logical Points
+system              /system      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
+system              /system      erofs       ro                                  wait,logical,first_stage_mount
+vendor              /vendor      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
+vendor              /vendor      erofs       ro                                  wait,logical,first_stage_mount
+product             /product     ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
+product             /product     erofs       ro                                  wait,logical,first_stage_mount
+odm                 /odm         ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
+odm                 /odm         erofs       ro                                  wait,logical,first_stage_mount
+
+# Direct image flashing
+/system_image       emmc         /dev/block/bootdevice/by-name/system            flags=backup=1;flashimg=1
+/odm_image          emmc         /dev/block/bootdevice/by-name/odm               flags=backup=1;flashimg=1;display="ODM Image"
+/product_image      emmc         /dev/block/bootdevice/by-name/product           flags=backup=1;flashimg=1;display="Product Image"
+/vendor_image       emmc         /dev/block/bootdevice/by-name/vendor            flags=backup=1;flashimg=1
+
+# ETC Moint Point
+/cache              ext4         /dev/block/bootdevice/by-name/cache
+/mnt/vendor/efs     ext4         /dev/block/bootdevice/by-name/efs               flags=display="EFS";backup=1
+/sec_efs            ext4         /dev/block/bootdevice/by-name/sec_efs           flags=display="Sec EFS";backup=1
+
+/omr		        ext4		/dev/block/bootdevice/by-name/omr		         flags=wipeingui;display="OMR"
+/optics		        ext4		/dev/block/bootdevice/by-name/optics	         flags=wipeingui;display="Optics"
+/prism		        ext4		/dev/block/bootdevice/by-name/prism		         flags=wipeingui;display="Prism"
+/omr_image	        emmc		/dev/block/bootdevice/by-name/omr		         flags=backup=1;flashimg=1;display="OMR Image"
+/optics_image     	emmc		/dev/block/bootdevice/by-name/optics	       	 flags=backup=1;flashimg=1;display="Optics Image"
+/prism_image	    emmc		/dev/block/bootdevice/by-name/prism		         flags=backup=1;flashimg=1;display="Prism Image"
+
+/mnt/vendor/persist ext4         /dev/block/bootdevice/by-name/persist           flags=display="Persist";backup=1
+
+# Samsung ODE
+/keydata            ext4         /dev/block/bootdevice/by-name/keydata           flags=display="Keydata";wipeingui
+/keyrefuge          ext4         /dev/block/bootdevice/by-name/keyrefuge         flags=display="Keyrefuge";wipeingui
+
+# USB-OTG Points
+/usb-otg	        vfat		 /dev/block/sde1	/dev/block/sde			     flags=display="USB-OTG";storage;wipeingui;removable
