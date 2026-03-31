@@ -91,6 +91,12 @@ TARGET_USERIMAGES_USE_EROFS := true
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
 
+# --- FIX RECOVERY LOOP ---
+BOARD_USES_RECOVERY_AS_BOOT := false
+TARGET_NO_RECOVERY := false
+# Aceasta linie ajuta la stergerea flag-urilor de reboot dupa ce intri in recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+
 # Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
 
