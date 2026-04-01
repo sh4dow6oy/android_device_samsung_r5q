@@ -14,17 +14,16 @@
 # limitations under the License.
 #
 
-# Dynamic partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
+# Inherit from r5q device
+$(call inherit-product, device/samsung/r5q/device.mk)
 
-# Encryption
-PRODUCT_PACKAGES += \
-    qcom_decrypt \
-    qcom_decrypt_fbe
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    libandroidicu
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := r5q
+PRODUCT_NAME := twrp_r5q
+PRODUCT_BRAND := Samsung
+PRODUCT_MODEL := Samsung Galaxy S10 Lite
+PRODUCT_MANUFACTURER := Samsung
