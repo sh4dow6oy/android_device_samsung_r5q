@@ -16,19 +16,19 @@ on:
       DEVICE_TREE:
         description: 'Custom Recovery Tree' 
         required: true
-        default: 'https://github.com/Kitchannel2010/twrp_a71.git'
+        default: 'https://github.com/sh4dow6oy/android_device_samsung_r5q.git'
       DEVICE_TREE_BRANCH:
         description: 'Custom Recovery Tree Branch' 
         required: true
-        default: 'twrp-12'
+        default: 'android-9.0'
       DEVICE_PATH:
         description: 'Specify your Device Path' 
         required: true
-        default: 'device/samsung/a71'
+        default: 'device/samsung/r5q'
       DEVICE_NAME:
         description: 'Specify your Device Codename' 
         required: true
-        default: 'a71'
+        default: 'r5q'
       BUILD_TARGET:
         description: 'Specify your Build Target' 
         required: true
