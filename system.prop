@@ -2,7 +2,6 @@
 ro.display.series=Samsung Galaxy S10 Lite
 
 # product/board stuff
-ro.product.board=sm8150
 ro.board.platform=sm8150
 
 # USB and MTP stuff
