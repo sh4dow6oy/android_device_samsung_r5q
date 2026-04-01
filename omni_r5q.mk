@@ -1,13 +1,19 @@
-#
-# Copyright (C) 2023 The Android Open Source Project
-# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# --- OrangeFox Theme & UI Fix ---
+# Acestea trebuie să fie SUS pentru a fi citite corect de scriptul de build
+TW_THEME := portrait_hdpi
+DEVICE_SCREEN_WIDTH := 1080
+DEVICE_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 2400
+
+# --- Boot Control Fix (Rezolvă blocarea în Recovery) ---
+AB_OTA_UPDATER := false
+BOARD_USES_RECOVERY_AS_BOOT := false
+TARGET_NO_RECOVERY := false
 
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
@@ -23,7 +29,8 @@ PRODUCT_MANUFACTURER := samsung
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
+# Actualizat pentru a reflecta un build de S10 Lite mai nou (opțional, dar ajută)
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="r5qxx-user 11 RP1A.200720.012 A908BXXU5EVK3 release-keys"
+    PRIVATE_BUILD_DESC="r5qxx-user 13 TP1A.220624.014 G770FXXU9HWB4 release-keys"
 
-BUILD_FINGERPRINT := samsung/r5qxx/r5q:11/RP1A.200720.012/G770FXXU5EVK3:user/release-keys
+BUILD_FINGERPRINT := samsung/r5qxx/r5q:13/TP1A.220624.014/G770FXXU9HWB4:user/release-keys
