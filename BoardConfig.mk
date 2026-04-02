@@ -7,7 +7,9 @@
 
 DEVICE_PATH := device/samsung/r5q
 
-# For building with minimal manifest
+# --- FIX PENTRU ERORILE DE DUPLICATE ---
+# Această linie este critică pentru a trece de eroarea de FAILED
+BUILD_BROKEN_DUP_SYSPROPS := true
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Android Verified Boot
@@ -28,7 +30,7 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
+TARGET_2ND_CPU_VARIANT_RUNTIME := generic
 TARGET_SUPPORTS_32_BIT_APPS := true
 
 ENABLE_CPUSETS := true
@@ -48,28 +50,22 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.conso
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x02000000
 BOARD_KERNEL_TAGS_OFFSET := 0x01e00000
+
+# Kernel - prebuilt paths
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+BOARD_INCLUDE_RECOVERY_DTBO := true
+
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DTBO := true
-#TARGET_KERNEL_CONFIG := r5q_defconfig
-#TARGET_KERNEL_SOURCE := kernel/samsung/r5q
 
-# Kernel - prebuilt
-TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-
-# Prebuilt: DTB
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-
-# Prebuilt: DTBO
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_INCLUDE_RECOVERY_DTBO := true
-
-# Encryption: Setup it
+# Encryption
 TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 BOARD_USES_QCOM_FBE_DECRYPTION := false
@@ -96,19 +92,18 @@ BOARD_BOOTIMAGE_PARTITION_SIZE     := 82694144
 BOARD_DTBOIMAGE_PARTITION_SIZE     := 25165824
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_FLASH_BLOCK_SIZE := 262144
-#LZMA_RAMDISK_TARGETS := recovery
 
-# Partitions
+# Dynamic Partitions
 BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_SUPER_PARTITION_SIZE := 8053063680
 BOARD_MAIN_SIZE := 8053063680
 BOARD_MAIN_PARTITION_LIST := system odm vendor product
 
-# TWRP Configuration: Basic config
+# TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := false
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -122,19 +117,13 @@ TW_NO_EXFAT_FUSE := true
 TW_Y_OFFSET := 110
 TW_H_OFFSET := -110
 
-# TWRP Configuration: Brightness/CPU
+# TWRP Brightness/CPU
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone17/temp
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 486
 TW_DEFAULT_BRIGHTNESS := 219
 
-# TWRP Configuration: Logd
+# TWRP Logd/Battery
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-
-# Backups
-TW_BACKUP_EXCLUSIONS := /data/fonts
-
-# Battery
 TW_USE_LEGACY_BATTERY_SERVICES := true
-endif
