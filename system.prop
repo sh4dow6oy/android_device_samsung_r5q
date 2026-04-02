@@ -1,8 +1,6 @@
 # Device release name
 ro.display.series=Samsung Galaxy S10 Lite
 
-# product/board stuff
-ro.product.platform=sm8150
 # USB and MTP stuff
 persist.sys.usb.config=mtp
 sys.usb.controller=a600000.dwc3
