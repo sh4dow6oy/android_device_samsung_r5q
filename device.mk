@@ -27,7 +27,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     ro.build.characteristics=default \
-    ro.display.series="Samsung Galaxy S10 Lite"
+    ro.display.series=Samsung Galaxy S10 Lite
 
 # Setări specifice Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
