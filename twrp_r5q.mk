@@ -31,11 +31,6 @@ PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-G770F
 PRODUCT_MANUFACTURER := samsung
 
-# Setări specifice de Build pentru a forța versiunea corectă
-PRODUCT_PLATFORM_RELEASE := 12
-PLATFORM_VERSION := 12
-PLATFORM_SDK_VERSION := 32
-
 # Fingerprint oficial (opțional, dar ajută la consistență)
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=twrp_r5q \

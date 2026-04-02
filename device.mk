@@ -18,11 +18,6 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_NAME := twrp_r5q
 
-# Versiune Software (Sincronizat cu eroarea ta: Android 12L / SDK 32)
-PRODUCT_PLATFORM_RELEASE := 12
-PLATFORM_SDK_VERSION := 32
-PLATFORM_VERSION := 12
-
 # Proprietăți de Sistem (Overrides)
 # Aici punem doar ce este strict necesar pentru TWRP
 PRODUCT_PROPERTY_OVERRIDES += \
