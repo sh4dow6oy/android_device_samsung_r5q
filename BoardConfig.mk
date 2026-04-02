@@ -14,12 +14,6 @@ ALLOW_MISSING_DEPENDENCIES := true
 BOARD_AVB_ENABLE := false
 BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 
-# Prebuilt AVB key for GSIs
-BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -127,9 +121,6 @@ TW_INCLUDE_NTFS_3G := false
 TW_NO_EXFAT_FUSE := true
 TW_Y_OFFSET := 110
 TW_H_OFFSET := -110
-# TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
-TW_CRYPTO_SYSTEM_VOLD_DEBUG := true
-TW_INCLUDE_RESETPROP := true
 
 # TWRP Configuration: Brightness/CPU
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone17/temp
