@@ -32,6 +32,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Setări specifice Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
+# decryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
 # Partitii și Sistem de fișiere
 PRODUCT_PACKAGES += \
     otapreopt_script \
